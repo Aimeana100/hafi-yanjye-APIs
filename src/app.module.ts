@@ -5,7 +5,9 @@ import { ProductsModule } from './modules/products/products.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { CustomersModule } from './modules/customers/customers.module';
 import { CouponsModule } from './modules/coupons/coupons.module';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConfig } from './config/typeorm.config';
+import { DiscountsModule } from './modules/discounts/discounts.module';
 @Module({
   imports: [
     UsersModule,
@@ -14,6 +16,8 @@ import { CouponsModule } from './modules/coupons/coupons.module';
     OrdersModule,
     CustomersModule,
     CouponsModule,
+    TypeOrmModule.forRoot(typeOrmConfig),
+    DiscountsModule,
   ],
   controllers: [],
   providers: [],

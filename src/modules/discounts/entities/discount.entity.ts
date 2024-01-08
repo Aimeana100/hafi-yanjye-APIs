@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Coupon {
+export class Discount {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
@@ -20,11 +20,7 @@ export class Coupon {
   @Column()
   rate: number;
   @Column()
-  minItems: number;
-  @Column()
-  timeUsage: number;
-  @Column()
-  minCost: number;
+  type: string;
   @ManyToMany(() => Product)
   @JoinTable()
   products: Product[];

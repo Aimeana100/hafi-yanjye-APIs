@@ -6,16 +6,22 @@ import {
   Patch,
   Param,
   Delete,
+  UsePipes,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('categories')
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Create Category' })
+  @UsePipes()
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.create(createCategoryDto);
   }
