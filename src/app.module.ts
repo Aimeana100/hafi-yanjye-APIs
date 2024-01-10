@@ -10,6 +10,7 @@ import { typeOrmConfigAsync } from './config/typeorm.config';
 import { DiscountsModule } from './modules/discounts/discounts.module';
 import { ConfigModule } from '@nestjs/config';
 import { validate } from './config/env.validation';
+import { AuthModule } from './modules/auth/auth.module';
 @Module({
   imports: [
     UsersModule,
@@ -19,6 +20,7 @@ import { validate } from './config/env.validation';
     CustomersModule,
     CouponsModule,
     DiscountsModule,
+    AuthModule,
     ConfigModule.forRoot({ isGlobal: true, validate }),
     TypeOrmModule.forRootAsync(typeOrmConfigAsync),
   ],

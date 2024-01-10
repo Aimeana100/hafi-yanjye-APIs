@@ -25,7 +25,7 @@ export class Product {
   cost: number;
   @Column()
   quatity: number;
-  @OneToMany(() => ProductImage, (images) => images.product)
+  @OneToMany(() => ProductImage, (images) => images.product, { cascade: true })
   images: ProductImage[];
   @ManyToOne(() => Category, (category) => category.products)
   category: Category;
