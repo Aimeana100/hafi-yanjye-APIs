@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  UsePipes,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
@@ -21,12 +20,12 @@ export class CategoriesController {
 
   @Post()
   @ApiOperation({ summary: 'Create Category' })
-  @UsePipes()
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.create(createCategoryDto);
   }
 
   @Get()
+  @ApiOperation({ summary: 'Get Categories' })
   findAll() {
     return this.categoriesService.findAll();
   }
