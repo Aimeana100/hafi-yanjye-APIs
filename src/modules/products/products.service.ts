@@ -38,14 +38,6 @@ export class ProductsService {
       data: { category: true },
     });
 
-    // create product image
-    // const prodImage = await this.productImageRepository.save(
-    //   createProductDto.images[0],
-    // );
-
-    // console.log(prodImage);
-
-    // Create ProductImage entities and associate them with the product
     const productImages = createProductDto.images.map((image) =>
       this.productImageRepository.create({ ...image, product }),
     );

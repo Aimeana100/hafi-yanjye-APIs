@@ -8,6 +8,7 @@ export class UserRepository extends Repository<User> {
   }
 
   getUserByEmail(email: string): Promise<User> {
-    return this.findOneBy({ email })[0];
+    const user = this.findOne({ where: { email } });
+    return user;
   }
 }
