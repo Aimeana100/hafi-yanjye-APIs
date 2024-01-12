@@ -1,36 +1,36 @@
-import { plainToInstance } from 'class-transformer';
-import { IsNotEmpty, IsString, validateSync } from 'class-validator';
+import { plainToInstance } from 'class-transformer'
+import { IsNotEmpty, IsString, validateSync } from 'class-validator'
 
 class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
-  DB_HOST: string;
-  DB_POST: number;
+  DB_HOST: string
+  DB_POST: number
 
   @IsNotEmpty()
   @IsString()
-  DB_USERNAME: string;
+  DB_USERNAME: string
 
   @IsNotEmpty()
   @IsString()
-  DB_PASSWORD: string;
+  DB_PASSWORD: string
 
   @IsNotEmpty()
   @IsString()
-  DB_NAME: string;
+  DB_NAME: string
 }
 
 export function validate(config: Record<string, unknown>) {
   const validateCOnfig = plainToInstance(EnvironmentVariables, config, {
     enableImplicitConversion: true,
-  });
+  })
   const errors = validateSync(validateCOnfig, {
     skipMissingProperties: false,
-  });
+  })
 
   if (errors.length > 0) {
-    throw new Error(errors.toString());
+    throw new Error(errors.toString())
   }
 
-  return validateCOnfig;
+  return validateCOnfig
 }

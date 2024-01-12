@@ -1,11 +1,11 @@
-import { IsNotEmpty, MinLength } from 'class-validator';
+import { IsNotEmpty, MinLength } from 'class-validator'
 export class CreateCategoryDto {
   @MinLength(2)
   @IsNotEmpty()
-  name: string;
+  name: string
 
   @MinLength(3)
-  description: string;
+  description: string
 
-  image: string;
+  image: string
 }

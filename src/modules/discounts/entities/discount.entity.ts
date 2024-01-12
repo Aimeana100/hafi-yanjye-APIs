@@ -1,27 +1,27 @@
-import { Product } from 'src/modules/products/entities/product.entity';
+import { Product } from 'src/modules/products/entities/product.entity'
 import {
   Column,
   Entity,
   JoinTable,
   ManyToMany,
   PrimaryGeneratedColumn,
-} from 'typeorm';
+} from 'typeorm'
 
 @Entity()
 export class Discount {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
   @Column()
-  code: string;
+  code: string
   @Column()
-  startAt: Date;
+  startAt: Date
   @Column()
-  endAt: Date;
+  endAt: Date
   @Column()
-  rate: number;
+  rate: number
   @Column()
-  type: string;
+  type: string
   @ManyToMany(() => Product)
   @JoinTable()
-  products: Product[];
+  products: Product[]
 }

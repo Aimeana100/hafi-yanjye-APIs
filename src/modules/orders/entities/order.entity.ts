@@ -4,22 +4,22 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
-} from 'typeorm';
-import { OrderDetails } from './order-details.entity';
-import { User } from 'src/modules/users/entities/user.entity';
+} from 'typeorm'
+import { OrderDetails } from './order-details.entity'
+import { User } from 'src/modules/users/entities/user.entity'
 
 @Entity()
 export class Order {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
   @Column()
-  orderId: string;
+  orderId: string
   @Column()
-  orderDate: Date;
+  orderDate: Date
   @Column()
-  status: string;
-  orderDetails: OrderDetails;
+  status: string
+  orderDetails: OrderDetails
   @OneToOne(() => User)
   @JoinColumn()
-  customer: User;
+  customer: User
 }
