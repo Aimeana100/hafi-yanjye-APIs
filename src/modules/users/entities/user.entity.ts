@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 export enum Role {
   ADMIN = 'ADMIN',
@@ -9,24 +9,24 @@ export enum Role {
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column()
-  fullName: string;
+  fullName: string
 
   @Column()
-  telphone: string;
+  telphone: string
 
   @Column({
     type: 'enum',
     enum: Role,
     default: Role.AGENT,
   })
-  role: Role;
+  role: Role
 
   @Column({ unique: true })
-  email: string;
+  email: string
 
   @Column()
-  password: string;
+  password: string
 }

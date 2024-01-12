@@ -6,11 +6,11 @@ import {
   Patch,
   Param,
   Delete,
-} from '@nestjs/common';
-import { CouponsService } from './coupons.service';
-import { CreateCouponDto } from './dto/create-coupon.dto';
-import { UpdateCouponDto } from './dto/update-coupon.dto';
-import { ApiTags } from '@nestjs/swagger';
+} from '@nestjs/common'
+import { CouponsService } from './coupons.service'
+import { CreateCouponDto } from './dto/create-coupon.dto'
+import { UpdateCouponDto } from './dto/update-coupon.dto'
+import { ApiTags } from '@nestjs/swagger'
 @ApiTags('coupons')
 @Controller('coupons')
 export class CouponsController {
@@ -18,26 +18,26 @@ export class CouponsController {
 
   @Post()
   create(@Body() createCouponDto: CreateCouponDto) {
-    return this.couponsService.create(createCouponDto);
+    return this.couponsService.create(createCouponDto)
   }
 
   @Get()
   findAll() {
-    return this.couponsService.findAll();
+    return this.couponsService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.couponsService.findOne(+id);
+    return this.couponsService.findOne(+id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCouponDto: UpdateCouponDto) {
-    return this.couponsService.update(+id, updateCouponDto);
+    return this.couponsService.update(+id, updateCouponDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.couponsService.remove(+id);
+    return this.couponsService.remove(+id)
   }
 }

@@ -1,8 +1,8 @@
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config'
 import {
   TypeOrmModuleAsyncOptions,
   TypeOrmModuleOptions,
-} from '@nestjs/typeorm';
+} from '@nestjs/typeorm'
 
 // not currently supported
 export default class TypeORmConfig {
@@ -16,7 +16,7 @@ export default class TypeORmConfig {
       database: configService.get('DB_NAME'),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
-    };
+    }
   }
 }
 
@@ -35,4 +35,4 @@ export const typeOrmConfigAsync: TypeOrmModuleAsyncOptions = {
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: true,
   }),
-};
+}

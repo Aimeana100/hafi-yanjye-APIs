@@ -4,36 +4,36 @@ import {
   IsNumber,
   IsString,
   ValidateNested,
-} from 'class-validator';
-import { Type } from 'class-transformer';
-import { ProductImageDto } from './create-product-images.dto';
+} from 'class-validator'
+import { Type } from 'class-transformer'
+import { ProductImageDto } from './create-product-images.dto'
 
 export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name: string
 
   @IsString()
   @IsNotEmpty()
-  description: string;
+  description: string
 
   @IsNumber({ maxDecimalPlaces: 2 })
   @IsNotEmpty()
-  price: number;
+  price: number
 
   @IsNumber({ maxDecimalPlaces: 2 })
-  cost: number;
+  cost: number
 
   @IsNumber()
-  quatity: number;
+  quatity: number
 
   @IsNotEmpty()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ProductImageDto)
-  images: ProductImageDto[];
+  images: ProductImageDto[]
 
   @IsNotEmpty()
   @IsNumber()
-  categoryId: number;
+  categoryId: number
 }
