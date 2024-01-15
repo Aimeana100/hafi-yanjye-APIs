@@ -1,3 +1,4 @@
+import { Category } from 'src/modules/categories/entities/category.entity'
 import { Product } from 'src/modules/products/entities/product.entity'
 import {
   Column,
@@ -20,8 +21,18 @@ export class Discount {
   @Column()
   rate: number
   @Column()
-  type: string
+  type: DiscountType
   @ManyToMany(() => Product)
   @JoinTable()
   products: Product[]
+
+  @ManyToMany(() => Category)
+  @JoinTable()
+  categories: Category[]
+}
+
+export const enum DiscountType {
+  ALL_PRODUCTS = 'ALL_PRODUCTS',
+  CATEGORIES = 'CATEGORIES',
+  PRODUCTS = 'PRODUCTS',
 }

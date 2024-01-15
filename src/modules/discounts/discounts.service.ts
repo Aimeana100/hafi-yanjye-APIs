@@ -5,7 +5,7 @@ import { UpdateDiscountDto } from './dto/update-discount.dto'
 @Injectable()
 export class DiscountsService {
   create(createDiscountDto: CreateDiscountDto) {
-    return 'This action adds a new discount'
+    return
   }
 
   findAll() {

@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { CouponRepository } from './coupons.repository'
 import { ProductRepository } from '../products/products.repository'
 import { In } from 'typeorm'
+import { generateCode } from '../../utils/generateId'
 
 @Injectable()
 export class CouponsService {
@@ -23,7 +24,7 @@ export class CouponsService {
     })
     const coupon = this.couponRepository.create({
       ...createCouponDto,
-      code: this.generateCouponCode(6),
+      code: generateCode(6),
       timeUsage: 0,
       products: products,
     })
@@ -47,17 +48,5 @@ export class CouponsService {
 
   remove(id: number) {
     return this.couponRepository.delete(id)
-  }
-
-  private generateCouponCode(length: number): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    const codeArray = []
-
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length)
-      codeArray.push(characters[randomIndex])
-    }
-
-    return codeArray.join('')
   }
 }

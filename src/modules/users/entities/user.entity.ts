@@ -18,6 +18,9 @@ export class User {
   @Column()
   telphone: string
 
+  @Column({ nullable: true })
+  tinNumber: string
+
   @Column({
     type: 'enum',
     enum: Role,
