@@ -1,8 +1,8 @@
 import {
   Column,
   Entity,
-  JoinColumn,
-  OneToOne,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm'
 import { OrderDetails } from './order-details.entity'
@@ -12,14 +12,28 @@ import { User } from 'src/modules/users/entities/user.entity'
 export class Order {
   @PrimaryGeneratedColumn()
   id: number
-  @Column()
+
+  @Column({ unique: true })
   orderId: string
+
   @Column()
   orderDate: Date
+
   @Column()
-  status: string
-  orderDetails: OrderDetails
-  @OneToOne(() => User)
-  @JoinColumn()
+  status: OrderStatus
+
+  @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.order)
+  orderDetails: OrderDetails[]
+
+  @ManyToOne(() => User, (customer) => customer.orders)
   customer: User
+}
+
+export enum OrderStatus {
+  PENDING = 'PENDING',
+  CONFIRMED = 'CONFIRMED',
+  CANCELED = 'CANCELED',
+  PAID = 'PAID',
+  DELIVERED = 'DELIVERED',
+  COMPLETED = 'COMPLETED',
 }
