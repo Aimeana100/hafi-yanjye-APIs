@@ -1,13 +1,21 @@
 import { Product } from 'src/modules/products/entities/product.entity'
-import { Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Order } from './order.entity'
+import { IsNotEmpty, IsNumber } from 'class-validator'
 
 @Entity()
 export class OrderDetails {
   @PrimaryGeneratedColumn()
   id: number
+
+  @Column({ nullable: true })
+  @IsNotEmpty()
+  @IsNumber()
+  quantity: number
+
   @ManyToOne(() => Order, (order) => order.orderDetails)
   order: Order
-  @OneToMany(() => Product, (product) => product.orders)
-  products: Product
+
+  @ManyToOne(() => Product, (product) => product.orders)
+  product: Product
 }

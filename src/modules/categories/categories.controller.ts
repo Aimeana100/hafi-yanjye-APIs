@@ -31,11 +31,13 @@ export class CategoriesController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Get single Category' })
   findOne(@Param('id') id: string) {
     return this.categoriesService.findOne(+id)
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Update Category' })
   update(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
@@ -44,6 +46,7 @@ export class CategoriesController {
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Delete Category' })
   remove(@Param('id') id: string) {
     return this.categoriesService.remove(+id)
   }

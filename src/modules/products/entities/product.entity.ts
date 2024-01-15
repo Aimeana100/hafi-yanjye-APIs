@@ -8,6 +8,7 @@ import {
 import { ProductImage } from './product-image.entity'
 import { Category } from 'src/modules/categories/entities/category.entity'
 import { Order } from 'src/modules/orders/entities/order.entity'
+import { OrderDetails } from 'src/modules/orders/entities/order-details.entity'
 
 @Entity()
 export class Product {
@@ -29,6 +30,6 @@ export class Product {
   images: ProductImage[]
   @ManyToOne(() => Category, (category) => category.products)
   category: Category
-  @ManyToOne(() => Order, (order) => order.orderDetails)
-  orders: Order
+  @ManyToOne(() => OrderDetails, (order) => order.product)
+  orders: OrderDetails[]
 }
