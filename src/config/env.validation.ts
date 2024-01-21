@@ -5,7 +5,7 @@ class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   DB_HOST: string
-  DB_POST: number
+  DB_PORT: number
 
   @IsNotEmpty()
   @IsString()
