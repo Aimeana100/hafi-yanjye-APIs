@@ -1,4 +1,4 @@
-import { IsEmail, IsString, Matches, MinLength } from 'class-validator'
+import { IsEmail, IsOptional, IsString, MinLength } from 'class-validator'
 
 export class SignUpDto {
   @IsString()
@@ -8,15 +8,19 @@ export class SignUpDto {
   telphone: string
 
   @IsString()
+  @IsOptional()
+  tinNumber: string
+
+  @IsString()
   @IsEmail()
   email: string
 
   @IsString()
   @MinLength(4)
   password: string
+}
 
+export class SignUpDtoWithPass extends SignUpDto {
   @IsString()
-  @MinLength(4)
-  @Matches('password')
-  comfirmPassword: string
+  confirmPassword: string
 }
