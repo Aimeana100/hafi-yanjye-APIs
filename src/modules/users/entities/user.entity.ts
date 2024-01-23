@@ -22,11 +22,9 @@ export class User {
   tinNumber: string
 
   @Column({
-    type: 'enum',
-    enum: Role,
     default: Role.AGENT,
   })
-  role: Role
+  role: string
 
   @OneToMany(() => Order, (orders) => orders.customer)
   orders: Order[]
